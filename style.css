@@ -1,0 +1,79 @@
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f0f0f;
+      color: #ffffff;
+    }
+    header {
+      background: linear-gradient(90deg, #ff5f6d, #ffc371);
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    section {
+      padding: 30px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .offer {
+      background-color: #1f1f1f;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(255, 95, 109, 0.2);
+    }
+    .offer h2 {
+      color: #ffc371;
+    }
+    .gallery img, .gallery video {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .payment {
+      background: #141414;
+      border: 1px solid #333;
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .payment h3 {
+      color: #ff5f6d;
+    }
+    .btn-whatsapp {
+      display: inline-block;
+      background-color: #25d366;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-whatsapp:hover {
+      background-color: #1ebe5d;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    .cta {
+      background-color: #252525;
+      padding: 30px 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+      text-align: center;
+    }
+    .cta h2 {
+      color: #ffc371;
+      margin-bottom: 15px;
+    }
+    .cta p {
+      font-size: 1.1rem;
+    }
+  
