@@ -7,41 +7,31 @@
     }
     header {
       background: linear-gradient(90deg, #ff5f6d, #ffc371);
-      padding: 20px;
+      padding: 15px;
       text-align: center;
     }
     header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
     section {
-      padding: 30px 20px;
-      max-width: 900px;
-      margin: auto;
+      padding: 20px 15px;
     }
-    .offer {
+    .offer, .payment, .cta {
       background-color: #1f1f1f;
       border-radius: 10px;
-      padding: 20px;
+      padding: 15px;
       margin-bottom: 20px;
       box-shadow: 0 4px 10px rgba(255, 95, 109, 0.2);
     }
-    .offer h2 {
+    h2, h3 {
       color: #ffc371;
+      margin-top: 0;
     }
     .gallery img, .gallery video {
-      max-width: 100%;
+      width: 100%;
       border-radius: 10px;
       margin-bottom: 15px;
-    }
-    .payment {
-      background: #141414;
-      border: 1px solid #333;
-      border-radius: 8px;
-      padding: 20px;
-    }
-    .payment h3 {
-      color: #ff5f6d;
     }
     .btn-whatsapp {
       display: inline-block;
@@ -52,28 +42,39 @@
       text-decoration: none;
       font-weight: bold;
       transition: background 0.3s;
+      text-align: center;
     }
     .btn-whatsapp:hover {
       background-color: #1ebe5d;
     }
     footer {
       text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #777;
+      padding: 15px;
+      font-size: 0.8rem;
+      color: #999;
     }
-    .cta {
-      background-color: #252525;
-      padding: 30px 20px;
-      border-radius: 10px;
-      margin-top: 30px;
-      text-align: center;
-    }
-    .cta h2 {
-      color: #ffc371;
-      margin-bottom: 15px;
-    }
-    .cta p {
-      font-size: 1.1rem;
+
+    /* 📵 Bloquer les grands écrans (PC) */
+    @media screen and (min-width: 1025px) {
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #000;
+        color: white;
+        text-align: center;
+      }
+
+      body > * {
+        display: none;
+      }
+
+      body::before {
+        content: "📱 Ce site est accessible uniquement sur mobile ou tablette.";
+        font-size: 1.2rem;
+        padding: 20px;
+        display: block;
+      }
     }
   
