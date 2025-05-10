@@ -1,80 +1,189 @@
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+  color: #fff;
+  overflow-x: hidden;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #0f0f0f;
-      color: #ffffff;
-    }
-    header {
-      background: linear-gradient(90deg, #ff5f6d, #ffc371);
-      padding: 15px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-    section {
-      padding: 20px 15px;
-    }
-    .offer, .payment, .cta {
-      background-color: #1f1f1f;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(255, 95, 109, 0.2);
-    }
-    h2, h3 {
-      color: #ffc371;
-      margin-top: 0;
-    }
-    .gallery img, .gallery video {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-    .btn-whatsapp {
-      display: inline-block;
-      background-color: #25d366;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.3s;
-      text-align: center;
-    }
-    .btn-whatsapp:hover {
-      background-color: #1ebe5d;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      font-size: 0.8rem;
-      color: #999;
-    }
+header {
+  background: linear-gradient(90deg, #ff5f6d, #ffc371);
+  text-align: center;
+  padding: 30px 10px;
+  perspective: 1000px;
+}
 
-    /* 📵 Bloquer les grands écrans (PC) */
-    @media screen and (min-width: 1025px) {
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #000;
-        color: white;
-        text-align: center;
-      }
+header h1 {
+  font-size: 2.5rem;
+  transform: rotateY(360deg);
+  animation: rotateIn 2s ease-in-out;
+}
 
-      body > * {
-        display: none;
-      }
+@keyframes rotateIn {
+  from {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
 
-      body::before {
-        content: "📱 Ce site est accessible uniquement sur mobile ou tablette.";
-        font-size: 1.2rem;
-        padding: 20px;
-        display: block;
-      }
-    }
-  
+section {
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.offer, .cta, .payment, .confirmation {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 0 15px rgba(255, 95, 109, 0.3);
+}
+
+.gallery .media {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+img, video {
+  width: 100%;
+  border-radius: 10px;
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+img:hover, video:hover {
+  transform: scale(1.05) rotateZ(1deg);
+}
+
+/* Bouton WhatsApp avec effet de zoom et lumière */
+.btn-whatsapp {
+  display: inline-block;
+  background-color: #25d366;  /* Couleur fixe */
+  color: white;
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 255, 127, 0.2);
+}
+
+/* Animation continue avec zoom et lumière (couleur fixe) */
+.btn-whatsapp:hover {
+  transform: scale(1.1) rotateZ(3deg);  /* Zoom sur le bouton */
+  box-shadow: 0 10px 30px rgba(0, 255, 127, 0.5);  /* Lumière persistante */
+}
+
+/* Animation continue pour les boutons sur index (pas de changement de couleur) */
+.btn-whatsapp, .cta .btn-whatsapp {
+  animation: zoomInOut 3s infinite, lightPulse 2s infinite;
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes lightPulse {
+  0% {
+    box-shadow: 0 5px 15px rgba(0, 255, 127, 0.2);
+  }
+  50% {
+    box-shadow: 0 10px 30px rgba(0, 255, 127, 0.6);
+  }
+  100% {
+    box-shadow: 0 5px 15px rgba(0, 255, 127, 0.2);
+  }
+}
+
+/* Section de confirmation */
+.confirmation h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.confirmation p {
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.confirmation .btn-whatsapp {
+  display: block;
+  margin: 0 auto;
+  background-color: #14cf2d;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  text-align: center;
+}
+
+.confirmation .btn-whatsapp:hover {
+  background-color: #ff3b3b;
+}
+
+/* Stylisation du formulaire de paiement sur la page payer.html */
+#paymentForm select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #ff5f6d;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  box-shadow: 0 0 8px rgba(255, 95, 109, 0.3);
+  transition: border-color 0.3s ease;
+}
+
+#paymentForm select:focus {
+  border-color: #ffc371;
+  outline: none;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+/* Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  .btn-whatsapp {
+    width: 100%;
+    text-align: center;
+  }
+  .confirmation p {
+    font-size: 0.9rem;
+  }
+}
