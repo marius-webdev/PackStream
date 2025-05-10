@@ -63,7 +63,7 @@ section {
    text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 5px 15px rgba(0, 255, 127, 0.2);
-  margin: 10px auto; /* Centre le bouton et évite le débordement */
+  margin: 10px 10; /* Centre le bouton et évite le débordement */
   max-width: 80%; /* Empêche le débordement horizontal */
 }
 
