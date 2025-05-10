@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Page de paiement pour le pack Premium TopTrucFR." />
+  <meta name="keywords" content="paiement, Netflix, IPTV, anti ondes, MTN, Moov, Celtiis" />
+  <meta name="author" content="PackStream(Marius ATEGBO)" />
+  <title>Paiement - Pack Premium</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Paiement du Pack Premium</h1>
+  </header>
+
+  <section class="payment">
+    <h2>Choisis ton réseau de paiement</h2>
+    <form id="paymentForm">
+      <label for="network">Sélectionne ton réseau :</label>
+      <select id="network" name="network">
+        <option value="MTN">MTN</option>
+        <option value="Moov">Moov</option>
+        <option value="Celtiis">Celtiis</option>
+      </select>
+
+      <button type="submit" class="btn-whatsapp">Payer</button>
+    </form>
+  </section>
+
+  
+  <footer>
+    &copy; 2025 PackStream(Marius ATEGBO). Tous droits réservés.
+  </footer>
+
+  <script>
+    document.getElementById("paymentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const network = document.getElementById("network").value;
+      let code;
+
+      switch (network) {
+        case "MTN":
+          code = "*133*1*0500000000*10000#"; // MTN code
+          break;
+        case "Moov":
+          code = "*155*1*0100000000*10000#"; // Moov code
+          break;
+        case "Celtiis":
+          code = "*133*1*0700000000*10000#"; // Celtiis code
+          break;
+        default:
+          alert("Réseau inconnu");
+          return;
+      }
+
+      // Rediriger vers l'application de paiement
+      window.location.href = `tel:${code}`;
+    });
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
