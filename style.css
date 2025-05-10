@@ -54,22 +54,21 @@ section {
 /* Bouton WhatsApp avec effet de zoom et lumière */
 .btn-whatsapp {
   display: inline-block;
-  background-color: #25d366;
+  background-color: #4CAF50;
   color: white;
-  padding: 14px 14px;
+  padding: 16px 24px;
   border-radius: 50px;
   font-weight: bold;
   text-decoration: none;
-   text-align: center;
+  text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 5px 15px rgba(0, 255, 127, 0.2);
-  margin: 10px 10; /* Centre le bouton et évite le débordement */
-  max-width: 80%; /* Empêche le débordement horizontal */
+  margin-top: 20px;
+  box-shadow: 0 5px 15px rgba(0, 255, 127, 0.3);
 }
 
 /* Animation continue avec zoom et lumière */
 .btn-whatsapp:hover {
-  transform: scale(1.1) rotateZ(3deg);
+  transform: scale(1.1) rotateZ(5deg);
   box-shadow: 0 10px 30px rgba(0, 255, 127, 0.5);
 }
 
