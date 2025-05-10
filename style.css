@@ -5,66 +5,56 @@ body {
   background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
   color: #fff;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Centrer la page verticalement */
+  box-sizing: border-box;
 }
 
+/* Centrage du header */
 header {
   background: linear-gradient(90deg, #ff5f6d, #ffc371);
   text-align: center;
   padding: 30px 10px;
   perspective: 1000px;
+  width: 100%;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-header h1 {
-  font-size: 2.5rem;
-  transform: rotateY(360deg);
-  animation: rotateIn 2s ease-in-out;
-}
-
-@keyframes rotateIn {
-  from {
-    transform: rotateY(90deg);
-    opacity: 0;
-  }
-  to {
-    transform: rotateY(0deg);
-    opacity: 1;
-  }
-}
-
+/* Centrage des sections */
 section {
   padding: 40px 20px;
   max-width: 1000px;
-  margin: auto;
+  margin: auto; /* Centre toutes les sections */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
 }
 
+/* Sections spécifiques avec bordures et ombres */
 .offer, .cta, .payment, .confirmation {
   background-color: #1a1a1a;
   border-radius: 12px;
   padding: 20px;
   margin: 20px 0;
   box-shadow: 0 0 15px rgba(255, 95, 109, 0.3);
-}
-
-.gallery .media {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-img, video {
   width: 100%;
-  border-radius: 10px;
-  transform: scale(1);
-  transition: transform 0.3s ease-in-out;
-}
-img:hover, video:hover {
-  transform: scale(1.05) rotateZ(1deg);
+  max-width: 800px; /* Limite la taille de chaque section */
+  box-sizing: border-box;
 }
 
 /* Bouton WhatsApp avec effet de zoom et lumière */
 .btn-whatsapp {
   display: inline-block;
-  background-color: #25d366;  /* Couleur fixe */
+  background-color: #25d366;
   color: white;
   padding: 14px 24px;
   border-radius: 50px;
@@ -72,12 +62,14 @@ img:hover, video:hover {
   text-decoration: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 5px 15px rgba(0, 255, 127, 0.2);
+  margin: 10px auto; /* Centre le bouton et évite le débordement */
+  max-width: 100%; /* Empêche le débordement horizontal */
 }
 
-/* Animation continue avec zoom et lumière (couleur fixe) */
+/* Animation continue avec zoom et lumière */
 .btn-whatsapp:hover {
-  transform: scale(1.1) rotateZ(3deg);  /* Zoom sur le bouton */
-  box-shadow: 0 10px 30px rgba(0, 255, 127, 0.5);  /* Lumière persistante */
+  transform: scale(1.1) rotateZ(3deg);
+  box-shadow: 0 10px 30px rgba(0, 255, 127, 0.5);
 }
 
 /* Animation continue pour les boutons sur index (pas de changement de couleur) */
@@ -109,31 +101,24 @@ img:hover, video:hover {
   }
 }
 
-/* Section de confirmation */
-.confirmation h2 {
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.confirmation p {
-  font-size: 1rem;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.confirmation .btn-whatsapp {
-  display: block;
-  margin: 0 auto;
-  background-color: #14cf2d;
-  padding: 15px 30px;
-  font-size: 1.2rem;
+/* Nouveau bouton payer avec animation */
+.btn-payer {
+  display: inline-block;
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 24px;
   border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
+  box-shadow: 0 5px 15px rgba(0, 255, 127, 0.3);
 }
 
-.confirmation .btn-whatsapp:hover {
-  background-color: #ff3b3b;
+.btn-payer:hover {
+  transform: scale(1.1) rotateZ(5deg);
+  box-shadow: 0 10px 30px rgba(0, 255, 127, 0.6);
 }
 
 /* Stylisation du formulaire de paiement sur la page payer.html */
@@ -155,6 +140,7 @@ img:hover, video:hover {
   outline: none;
 }
 
+/* Footer */
 footer {
   text-align: center;
   padding: 20px;
@@ -179,11 +165,42 @@ footer {
   header h1 {
     font-size: 2rem;
   }
+  
+  /* Bouton WhatsApp centré et ajusté pour petits écrans */
   .btn-whatsapp {
-    width: 100%;
-    text-align: center;
+    width: 90%; /* Prend 90% de la largeur de l'écran sur mobile */
+    padding: 14px;
+    max-width: 400px;
   }
-  .confirmation p {
-    font-size: 0.9rem;
+
+  .offer, .cta, .payment, .confirmation {
+    max-width: 90%;  /* Réduit la largeur pour les petits écrans */
+    padding: 15px;
+    box-shadow: 0 0 8px rgba(255, 95, 109, 0.3);
+  }
+
+  /* Ajustements supplémentaires pour les petites tailles d'écran */
+  .btn-payer {
+    width: 90%;
+    padding: 14px;
+    font-size: 1rem;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn-whatsapp {
+    width: 100%; /* Assure que le bouton est bien dimensionné sur les petits écrans */
+    padding: 12px;
+  }
+
+  .offer, .cta, .payment, .confirmation {
+    padding: 12px;
+    margin: 10px;
+    box-shadow: 0 0 6px rgba(255, 95, 109, 0.3);
   }
 }
