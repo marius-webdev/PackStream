@@ -8,7 +8,7 @@
   <meta name="author" content="PackStream(Marius ATEGBO)" />
   <title>Paiement - Pack Premium</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="payer.css" />
 </head>
 <body>
   <header>
@@ -16,17 +16,24 @@
   </header>
 
   <section class="payment">
-    <h2>Choisis ton réseau de paiement</h2>
-    <form id="paymentForm">
-      <label for="network">Sélectionne ton réseau :</label>
-      <select id="network" name="network">
-        <option value="MTN">MTN</option>
-        <option value="Moov">Moov</option>
-        <option value="Celtiis">Celtiis</option>
-      </select>
+    <h1>Choisissez votre mode de paiement</h1>
 
-      <button type="submit" class="btn-whatsapp">Payer</button>
-    </form>
+    <label for="pays">Pays :</label>
+    <select id="pays">
+      <option value="benin">🇧🇯 Bénin</option>
+      <option value="togo">🇹🇬 Togo</option>
+      <option value="senegal">🇸🇳 Sénégal</option>
+      <option value="cote_divoire">🇨🇮 Côte d'Ivoire</option>
+    </select>
+
+    <label for="reseau">Réseau :</label>
+    <select id="reseau">
+      <option value="mtn">MTN</option>
+      <option value="moov">Moov</option>
+      <option value="celtis">Celtis</option>
+    </select>
+
+    <button class="btn-payer" onclick="genererLienUSSD()">Payer</button>
   </section>
 
   
@@ -34,33 +41,62 @@
     &copy; 2025 PackStream(Marius ATEGBO). Tous droits réservés.
   </footer>
 
-  <script>
-    document.getElementById("paymentForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+   <script>
+  const ussdCodes = {
+    'benin': {
+      'mtn': '*880*1#',
+      'moov': '*155*1#',
+      'celtis': '*155*1#'
+    },
+    'togo': {
+      'mtn': '*880*1#',
+      'moov': '*155*1#'
+    },
+    'senegal': {
+      'mtn': '*880*1#',
+      'moov': '*155*1#'
+    },
+    'cote_divoire': {
+      'mtn': '*880*1#',
+      'moov': '*155*1#'
+    }
+  };
 
-      const network = document.getElementById("network").value;
-      let code;
+  const paysSelect = document.getElementById('pays');
+  const reseauSelect = document.getElementById('reseau');
 
-      switch (network) {
-        case "MTN":
-          code = "*880*1*0500000000*10000#"; // MTN code
-          break;
-        case "Moov":
-          code = "*855*1*0100000000*10000#"; // Moov code
-          break;
-        case "Celtiis":
-          code = "*889*1*0700000000*10000#"; // Celtiis code
-          break;
-        default:
-          alert("Réseau inconnu");
-          return;
+  paysSelect.addEventListener('change', function () {
+    const pays = this.value;
+
+    // Affiche ou cache Celtis
+    const celtisOption = [...reseauSelect.options].find(opt => opt.value === 'celtis');
+    if (pays === 'benin') {
+      celtisOption.style.display = 'block';
+    } else {
+      if (reseauSelect.value === 'celtis') {
+        reseauSelect.value = 'mtn'; // remet un autre réseau par défaut
       }
+      celtisOption.style.display = 'none';
+    }
+  });
 
-      // Rediriger vers l'application de paiement
+  function genererLienUSSD() {
+    const pays = paysSelect.value;
+    const reseau = reseauSelect.value;
+
+    if (ussdCodes[pays] && ussdCodes[pays][reseau]) {
+      const code = ussdCodes[pays][reseau].replace(/#/g, '%23');
       window.location.href = `tel:${code}`;
-    });
-  </script>
+    } else {
+      alert('Code USSD non disponible pour cette combinaison.');
+    }
+  }
 
-  <script src="script.js"></script>
+  // Appelle une première fois au chargement pour cacher Celtis si besoin
+  window.addEventListener('DOMContentLoaded', () => {
+    paysSelect.dispatchEvent(new Event('change'));
+  });
+</script>
+<script src="script.js"></script>
 </body>
 </html>

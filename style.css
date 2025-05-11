@@ -101,44 +101,6 @@ section {
   }
 }
 
-/* Nouveau bouton payer avec animation */
-.btn-payer {
-  display: inline-block;
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 24px;
-  border-radius: 50px;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-top: 20px;
-  box-shadow: 0 5px 15px rgba(0, 255, 127, 0.3);
-}
-
-.btn-payer:hover {
-  transform: scale(1.1) rotateZ(5deg);
-  box-shadow: 0 10px 30px rgba(0, 255, 127, 0.6);
-}
-
-/* Stylisation du formulaire de paiement sur la page payer.html */
-#paymentForm select {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  background-color: #333;
-  color: #fff;
-  border: 2px solid #ff5f6d;
-  margin-bottom: 20px;
-  font-size: 1rem;
-  box-shadow: 0 0 8px rgba(255, 95, 109, 0.3);
-  transition: border-color 0.3s ease;
-}
-
-#paymentForm select:focus {
-  border-color: #ffc371;
-  outline: none;
-}
 
 /* Footer */
 footer {
