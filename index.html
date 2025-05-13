@@ -3,44 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Netflix, IPTV et anti-ondes pour 10.000F seulement ! Offre exclusive de TopTrucFR." />
-  <meta name="keywords" content="Netflix, IPTV, anti ondes, bracelet, TopTrucFR, MTN, Moov, Celtiis" />
+  <meta name="description" content="Pack Premium Ultra : Netflix illimité + 2000 chaînes TV pour seulement 5.000F. Paiement local sécurisé via FedaPay." />
+  <meta name="keywords" content="Netflix, IPTV, streaming, TopTrucFR, MTN, Moov, Celtiis, FedaPay" />
   <meta name="author" content="PackStream(Marius ATEGBO)" />
-  <title>PackStream - Pack Premium</title>
+  <title>Pack Premium - Accès immédiat</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.fedapay.com/checkout.js?v=1.1.7"></script>
 </head>
 <body>
+
   <header>
     <h1 class="reveal rotate">🔥 Pack Premium Ultra 🔥</h1>
   </header>
 
   <section class="offer">
-    <h2 class="reveal slide">Netflix + IPTV + Anti-Ondes</h2>
-    <p class="reveal fade">Le tout pour <strong>10.000F seulement</strong>. Streaming illimité et santé protégée.</p>
+    <h2 class="reveal slide">Votre divertissement illimité commence ici</h2>
+    <p class="reveal fade">
+      Pour seulement <strong>5.000F</strong>, profitez d'un accès VIP à <strong>Netflix illimité</strong> et plus de <strong>2.000 chaînes TV, films, séries & événements sportifs en direct</strong> sur votre téléphone.<br><br>
+      ✔️ Paiement 100% local & sécurisé via FedaPay<br>
+      ✔️ Accès immédiat après validation<br><br>
+      Ne manquez plus aucun match, série ou film. <strong>Rejoignez la communauté Premium maintenant !</strong>
+    </p>
+    <button class="btn-payer" onclick="launchFedaPay()">Cliquez et transformez votre smartphone en salle de cinéma 🌍📱</button>
   </section>
 
   <section class="cta">
-    <h2 class="reveal bounce">🧠 Paye ton pack maintenant</h2>
-    <p class="reveal fade">Décide vite. Offre exclusive. Quantité limitée.</p>
-    <a class="btn-whatsapp reveal pulse" href="payer.html">
-      ⚡ Je commande maintenant
-    </a>
+    <h2 class="reveal bounce">🚀 Paiement Express & Sécurisé</h2>
+    <p class="reveal fade">Finalisez votre accès en moins de 2 minutes avec FedaPay.</p>
+    <button class="btn-payer">💳 Je paye maintenant</button>
   </section>
 
-   <section class="confirmation">
-    <h2 class="reveal">Confirmer ton paiement</h2>
-    <p class="reveal">Après avoir effectué le paiement via MTN, Moov ou Celtiis, clique sur le bouton ci-dessous pour envoyer une capture d'écran de ton SMS de confirmation.</p>
-    <p class="reveal">Cela nous permettra de finaliser ta commande. Prends une capture d'écran du message de confirmation, puis clique sur le bouton pour l'envoyer via WhatsApp.</p>
-    <a class="btn-whatsapp reveal pulse" href="https://wa.me/22962394665?text=J'ai%20effectué%20le%20paiement%20pour%20le%20pack%20Premium.%20Voici%20ma%20capture%20d'écran." target="_blank">
-      ✅ Confirmer avec capture d'écran
+  <section class="confirmation">
+    <h2 class="reveal">📸 Confirmation ultra rapide</h2>
+    <p class="reveal">Après paiement, envoyez une capture d'écran sur WhatsApp pour recevoir vos accès Premium instantanément.</p>
+    <a class="btn-whatsapp reveal pulse" href="https://wa.me/22962394665?text=J'ai%20payé%20le%20Pack%20Premium%20via%20FedaPay.%20Voici%20ma%20capture%20d'écran." target="_blank">
+      ✅ Confirmer sur WhatsApp
     </a>
   </section>
 
   <footer>
     &copy; 2025 PackStream(Marius ATEGBO). Tous droits réservés.
   </footer>
-
+    <script type="text/javascript">
+      function launchFedaPay() {
+      FedaPay.init(".btn-payer", { public_key: "pk_live_ZMVMVw5qIjxuKtuBtYqPMp_A" ,
+        transaction: {
+        amount: 5000,
+        currency: 'XOF',
+        description: 'Pack Premium Ultra - Accès Netflix & IPTV illimité'
+      },
+      onSuccess: function(response) {
+        // Lorsque le paiement est réussi, on affiche la confirmation
+        document.querySelector('.confirmation').style.display = 'block';
+        document.querySelector('.confirmation p').innerText = 'Votre paiement a été validé ! Vous pouvez maintenant confirmer votre accès en envoyant une capture d\'écran sur WhatsApp.';
+      },
+      onError: function(error) {
+        alert("Une erreur est survenue lors du paiement, veuillez réessayer.");
+      }
+      });
+       }
+    </script>
   <script src="script.js"></script>
 </body>
 </html>

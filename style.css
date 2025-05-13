@@ -40,7 +40,7 @@ section {
 }
 
 /* Sections spécifiques avec bordures et ombres */
-.offer, .cta, .payment, .confirmation {
+.offer, .cta, .confirmation {
   background-color: #1a1a1a;
   border-radius: 12px;
   padding: 20px;
@@ -51,8 +51,21 @@ section {
   box-sizing: border-box;
 }
 
-/* Bouton WhatsApp avec effet de zoom et lumière */
-.btn-whatsapp {
+/* Animation de zoom avant et arrière pour les boutons */
+@keyframes zoomInOut {
+  0% {
+    transform: scale(0.7);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.7);
+  }
+}
+
+/* Boutons avec effet de zoom continu */
+.btn-whatsapp, .btn-payer {
   display: inline-block;
   background-color: #4CAF50;
   color: white;
@@ -61,46 +74,15 @@ section {
   font-weight: bold;
   text-decoration: none;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-top: 20px;
   box-shadow: 0 5px 15px rgba(0, 255, 127, 0.3);
+  animation: zoomInOut 3s infinite; /* Animation continue de zoom */
 }
 
-/* Animation continue avec zoom et lumière */
-.btn-whatsapp:hover {
-  transform: scale(1.1) rotateZ(5deg);
-  box-shadow: 0 10px 30px rgba(0, 255, 127, 0.5);
+/* Bouton WhatsApp spécifique avec pulsation */
+.btn-whatsapp {
+  background-color: #25d366;
 }
-
-/* Animation continue pour les boutons sur index (pas de changement de couleur) */
-.btn-whatsapp, .cta .btn-whatsapp {
-  animation: zoomInOut 3s infinite, lightPulse 2s infinite;
-}
-
-@keyframes zoomInOut {
-  0% {
-    transform: scale(0.7);
-  }
-  50% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(0.7);
-  }
-}
-
-@keyframes lightPulse {
-  0% {
-    box-shadow: 0 5px 15px rgba(0, 255, 127, 0.2);
-  }
-  50% {
-    box-shadow: 0 10px 30px rgba(0, 255, 127, 0.6);
-  }
-  100% {
-    box-shadow: 0 5px 15px rgba(0, 255, 127, 0.2);
-  }
-}
-
 
 /* Footer */
 footer {
@@ -110,18 +92,6 @@ footer {
   font-size: 0.85rem;
 }
 
-/* Reveal Animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.6s ease-out;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   header h1 {
@@ -129,13 +99,13 @@ footer {
   }
   
   /* Bouton WhatsApp centré et ajusté pour petits écrans */
-  .btn-whatsapp {
+  .btn-whatsapp, .btn-payer {
     width: 90%; /* Prend 90% de la largeur de l'écran sur mobile */
     padding: 14px;
     max-width: 400px;
   }
 
-  .offer, .cta, .payment, .confirmation {
+  .offer, .cta, .confirmation {
     max-width: 90%;  /* Réduit la largeur pour les petits écrans */
     padding: 15px;
     box-shadow: 0 0 8px rgba(255, 95, 109, 0.3);
@@ -160,7 +130,7 @@ footer {
     padding: 12px;
   }
 
-  .offer, .cta, .payment, .confirmation {
+  .offer, .cta, .confirmation {
     padding: 12px;
     margin: 10px;
     box-shadow: 0 0 6px rgba(255, 95, 109, 0.3);
